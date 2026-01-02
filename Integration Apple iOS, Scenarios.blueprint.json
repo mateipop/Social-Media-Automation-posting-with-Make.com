@@ -1,0 +1,280 @@
+{
+    "name": "Integration Apple iOS, Scenarios",
+    "flow": [
+        {
+            "id": 1,
+            "module": "ios:ButtonPressed",
+            "version": 1,
+            "parameters": {
+                "scope": "button:first-button",
+                "button": "first-button",
+                "device": 2348459
+            },
+            "mapper": {},
+            "metadata": {
+                "designer": {
+                    "x": -213,
+                    "y": 3
+                },
+                "restore": {
+                    "parameters": {
+                        "device": {
+                            "data": {
+                                "editable": "undefined"
+                            },
+                            "label": "Matei's iPhone"
+                        }
+                    }
+                },
+                "parameters": [
+                    {
+                        "name": "device",
+                        "type": "device",
+                        "label": "Device",
+                        "required": true
+                    },
+                    {
+                        "name": "button",
+                        "type": "text",
+                        "label": "Button ID",
+                        "required": true
+                    }
+                ]
+            }
+        },
+        {
+            "id": 4,
+            "module": "ios:SendNotification",
+            "version": 1,
+            "parameters": {
+                "device": 2348459
+            },
+            "mapper": {
+                "body": "",
+                "title": "Starting posting process",
+                "action": "",
+                "priority": 10,
+                "collapsible": false
+            },
+            "metadata": {
+                "designer": {
+                    "x": 65,
+                    "y": 1
+                },
+                "restore": {
+                    "expect": {
+                        "action": {
+                            "label": "Default"
+                        },
+                        "priority": {
+                            "label": "Deliver immediately"
+                        }
+                    },
+                    "parameters": {
+                        "device": {
+                            "data": {
+                                "editable": "undefined"
+                            },
+                            "label": "Matei's iPhone"
+                        }
+                    }
+                },
+                "parameters": [
+                    {
+                        "name": "device",
+                        "type": "device:apn",
+                        "label": "Device",
+                        "required": true
+                    }
+                ],
+                "expect": [
+                    {
+                        "name": "title",
+                        "type": "text",
+                        "label": "Title",
+                        "required": true
+                    },
+                    {
+                        "name": "body",
+                        "type": "text",
+                        "label": "Body"
+                    },
+                    {
+                        "name": "action",
+                        "type": "select",
+                        "label": "Action",
+                        "validate": {
+                            "enum": [
+                                "open_url"
+                            ]
+                        }
+                    },
+                    {
+                        "name": "priority",
+                        "type": "select",
+                        "label": "Priority",
+                        "required": true,
+                        "validate": {
+                            "enum": [
+                                10,
+                                5
+                            ]
+                        }
+                    },
+                    {
+                        "name": "collapsible",
+                        "type": "boolean",
+                        "label": "Collapse push notifications",
+                        "required": true
+                    }
+                ]
+            }
+        },
+        {
+            "id": 2,
+            "module": "scenario-service:CallSubscenario",
+            "version": 2,
+            "parameters": {
+                "scenario": "SCN_5282214",
+                "shouldWaitForExecutionEnd": true
+            },
+            "mapper": {},
+            "metadata": {
+                "designer": {
+                    "x": 300,
+                    "y": 0
+                },
+                "restore": {
+                    "parameters": {
+                        "scenario": {
+                            "label": "Drive -> Insta working"
+                        }
+                    }
+                },
+                "parameters": [
+                    {
+                        "name": "scenario",
+                        "type": "scenario",
+                        "label": "Scenario",
+                        "required": true
+                    },
+                    {
+                        "name": "shouldWaitForExecutionEnd",
+                        "type": "boolean",
+                        "label": "Wait for subscenario output",
+                        "required": true
+                    }
+                ]
+            }
+        },
+        {
+            "id": 3,
+            "module": "ios:SendNotification",
+            "version": 1,
+            "parameters": {
+                "device": 2348459
+            },
+            "mapper": {
+                "body": "",
+                "title": "Post Uploaded",
+                "action": "",
+                "priority": 10,
+                "collapsible": false
+            },
+            "metadata": {
+                "designer": {
+                    "x": 600,
+                    "y": 0
+                },
+                "restore": {
+                    "expect": {
+                        "action": {
+                            "label": "Default"
+                        },
+                        "priority": {
+                            "label": "Deliver immediately"
+                        }
+                    },
+                    "parameters": {
+                        "device": {
+                            "data": {
+                                "editable": "undefined"
+                            },
+                            "label": "Matei's iPhone"
+                        }
+                    }
+                },
+                "parameters": [
+                    {
+                        "name": "device",
+                        "type": "device:apn",
+                        "label": "Device",
+                        "required": true
+                    }
+                ],
+                "expect": [
+                    {
+                        "name": "title",
+                        "type": "text",
+                        "label": "Title",
+                        "required": true
+                    },
+                    {
+                        "name": "body",
+                        "type": "text",
+                        "label": "Body"
+                    },
+                    {
+                        "name": "action",
+                        "type": "select",
+                        "label": "Action",
+                        "validate": {
+                            "enum": [
+                                "open_url"
+                            ]
+                        }
+                    },
+                    {
+                        "name": "priority",
+                        "type": "select",
+                        "label": "Priority",
+                        "required": true,
+                        "validate": {
+                            "enum": [
+                                10,
+                                5
+                            ]
+                        }
+                    },
+                    {
+                        "name": "collapsible",
+                        "type": "boolean",
+                        "label": "Collapse push notifications",
+                        "required": true
+                    }
+                ]
+            }
+        }
+    ],
+    "metadata": {
+        "instant": true,
+        "version": 1,
+        "scenario": {
+            "roundtrips": 1,
+            "maxErrors": 3,
+            "autoCommit": true,
+            "autoCommitTriggerLast": true,
+            "sequential": false,
+            "slots": null,
+            "confidential": false,
+            "dataloss": false,
+            "dlq": false,
+            "freshVariables": false
+        },
+        "designer": {
+            "orphans": []
+        },
+        "zone": "eu2.make.com",
+        "notes": []
+    }
+}
